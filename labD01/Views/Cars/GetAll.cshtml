@@ -1,0 +1,55 @@
+﻿@model List<Car>;
+@{
+    var cars = Model;
+}
+
+    
+    @foreach (var car in cars)
+    {
+    <ul class="bg-light">
+           <li >Car Name : @car.ToString()</li>
+        <li >@Html.Raw(@car.HtmlDescription)</li>
+        <li >
+            <figure>
+                <img src="@car.Image" alt="@car.Model From @car.Manufacturer" />
+                <figcaption>@car.Model From @car.Manufacturer</figcaption>
+            </figure></li>
+        <li><a href="/cars/GetDetailsForCar?cModel=@car.Model&status=list">Details</a></li>
+    </ul>
+    }
+
+
+@{
+    void RenderTableBody()
+    {
+        
+            <tr class="bg-dark text-white">
+                <th>Name</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Using Duration</th>
+                <th>Details</th>
+            </tr>
+            @for (int i = 0; i < cars.Count; i++)
+            {
+                <tr class="bg-light">
+                    <td>@cars[i].Model from @cars[i].Manufacturer</td>
+                    <td>
+                        <figure>
+                            <img src="@cars[i].Image" alt="@cars[i].Model From @cars[i].Manufacturer" />
+                            <figcaption>@cars[i].Model From @cars[i].Manufacturer</figcaption>
+                        </figure>
+                    </td>
+                    <td>@Html.Raw(@cars[i].HtmlDescription)</td>
+                    <td>@((@DateTime.Now.Year) - (@cars[i].FirstUseDate.Year)) Years</td>
+                    <td><a href="/cars/GetDetailsForCar?cModel=@cars[i].Model&status=table">Details</a></td>
+                </tr>
+            }
+       
+    }
+}
+<table class="table">
+    @{
+        RenderTableBody();
+    }
+</table>

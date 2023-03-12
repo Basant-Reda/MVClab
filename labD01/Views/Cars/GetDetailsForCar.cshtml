@@ -1,0 +1,20 @@
+﻿
+@{
+    var car = Model.car;
+    var status = Model.status;
+
+}
+
+<div>
+    <p>Name : @car.Model from @car.Manufacturer</p>
+    <p>Usage Duration : @(@DateTime.Now.Year - @car.FirstUseDate.Year) years </p>
+    <p>DESC : @Html.Raw(@car.HtmlDescription)</p>
+    <p>
+        Image :
+        <figure>
+            <img src="@car.Image" alt="@car.Model From @car.Manufacturer" />
+            <figcaption>@car.Model From @car.Manufacturer</figcaption>
+        </figure>
+    </p>
+</div>
+<div>From : @Model.status</div>
