@@ -1,0 +1,22 @@
+﻿@{
+    var tickets = Model;
+}
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Created Date</th>
+        <th>Is Closed</th>
+        <th>Severity</th>
+        <th>Description</th>
+    </tr>
+    @foreach (var ticket in tickets)
+    {
+        <tr>
+            <td>@ticket.Id</td>
+            <td>@ticket.CreatedDate</td>
+            <td>@ticket.IsClosed</td>
+            <td>@ticket.Severity</td>
+            <td>@ticket.Description</td>
+        </tr>
+    }
+</table>
