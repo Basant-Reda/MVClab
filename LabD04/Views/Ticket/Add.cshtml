@@ -1,0 +1,26 @@
+﻿@using TicketSystem.DAL;
+@using TicketSystem.BL;
+@model AddVM;
+
+
+
+
+<form asp-action="Add" method="post">
+
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input class="form-control" asp-for="Title" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Desc"></label>
+        <input class="form-control" asp-for="Desc" />
+    </div>
+    <div class="form-group">
+        <label asp-for="severity"></label>
+        <select class="m-1" asp-for="severity" asp-items="Html.GetEnumSelectList<Severity>()"></select>
+    </div>
+
+    <button class="btn btn-success m-1"> Submit </button>
+
+</form>

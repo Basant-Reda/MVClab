@@ -1,0 +1,38 @@
+﻿@using TicketSystem.DAL;
+@using TicketSystem.BL;
+
+@model List<TicketGetVM>;
+
+@{
+    var tickets = Model;
+}
+<table class="table">
+    <tr>
+        <th>Ticket ID</th>
+        <th>Ticket Title</th>
+        <th>Severity</th>
+        <th>Description</th>
+
+    </tr>
+    @foreach (var ticket in tickets)
+    {
+        <tr>
+            <td><a href="/ticket/getdetails/@ticket.Id">@ticket.Id</a></td>
+            <td>@ticket.Title</td>
+            <td>@ticket.severity</td>
+            <td>@ticket.Desc</td>
+            <td>
+                <button class="btn btn-success">
+                    <a class="text-white text-decoration-none" href="/ticket/edit/@ticket.Id">Edit</a>
+                </button>
+            </td>
+            <td>
+                <form action="Delete/@ticket.Id" method="post">
+                    <button class="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
